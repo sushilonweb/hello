@@ -17,6 +17,7 @@
             align-items: center;
             position: relative;
             overflow: hidden;
+            box-sizing: border-box; /* Ensure padding does not affect layout */
         }
         .title {
             font-weight: bold;
@@ -32,8 +33,40 @@
             right: 20px;
         }
         .video {
-            width: 560px; /* Adjust width as needed */
-            height: 315px; /* Adjust height as needed */
+            width: 100%;
+            max-width: 560px; /* Maximum width */
+            height: auto; /* Auto height to maintain aspect ratio */
+            margin-top: 80px; /* Increased margin above the video */
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 1.5rem; /* Smaller font size on smaller screens */
+                margin-bottom: 15px; /* Adjust margin */
+            }
+            .clock {
+                font-size: 1.2rem; /* Smaller font size on smaller screens */
+                right: 10px; /* Adjust position */
+                top: 10px; /* Adjust position */
+            }
+            .video {
+                max-width: 100%; /* Full width on smaller screens */
+                margin-top: 30px; /* Adjust margin */
+            }
+        }
+        @media (max-width: 480px) {
+            .title {
+                font-size: 1.2rem; /* Further reduced font size for very small screens */
+                margin-bottom: 10px; /* Adjust margin */
+            }
+            .clock {
+                font-size: 1rem; /* Further reduced font size for very small screens */
+                right: 5px; /* Adjust position */
+                top: 5px; /* Adjust position */
+            }
+            .video {
+                margin-top: 20px; /* Further reduced margin for very small screens */
+            }
         }
     </style>
 </head>
