@@ -3,36 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Introduction</title>
+    <title>Sushil Pathak Clock</title>
     <style>
         body {
+            background-color: #000000; /* Black background */
+            color: #e0e0e0; /* Dark white text color */
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
             margin: 0;
             padding: 20px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        .title {
+            font-weight: bold;
+            font-size: 2rem;
+            margin-bottom: 20px; /* Margin below title */
         }
-        h1 {
-            color: #007BFF;
+        .clock {
+            font-size: 1.5rem;
+            color: #e0e0e0;
+            margin-bottom: 40px; /* Margin below clock */
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .video {
+            width: 560px; /* Adjust width as needed */
+            height: 315px; /* Adjust height as needed */
         }
     </style>
 </head>
 <body>
+    <div class="title">Sushil Pathak</div>
+    <div class="clock" id="clock">00:00:00.000 AM</div>
+    <iframe class="video" src="https://www.youtube.com/embed/k20wnICXpps" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-    <div class="container">
-        <h1>Introduction</h1>
-        <p>Hello! My name is [Your Name], and welcome to my introduction page. I am passionate about [Your Passion] and enjoy working on [Your Interests].</p>
-        <p>I have experience in [Your Experience] and am currently focused on [Your Current Focus]. In my free time, I love to [Your Hobbies].</p>
-        <p>Feel free to explore more about me through this simple webpage. Thank you for visiting!</p>
-    </div>
+    <script>
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const milliseconds = String(now.getMilliseconds()).padStart(3, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            const formattedHours = String(hours).padStart(2, '0');
+            document.getElementById('clock').textContent = `${formattedHours}:${minutes}:${seconds}.${milliseconds} ${ampm}`;
+        }
 
+        setInterval(updateClock, 1); // Update every millisecond
+        updateClock(); // Initial call to display the clock immediately
+    </script>
 </body>
 </html>
