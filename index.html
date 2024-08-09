@@ -3,51 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Let's Go, Hype!</title>
+    <title>Sushil Pathak Clock</title>
+    <link rel="icon" href="path/to/favicon.ico" type="image/x-icon"> <!-- Include your favicon path -->
     <style>
         body {
-            background-color: #1c1c1c;
-            color: #ffffff;
+            background-color: #000000; /* Dark black background */
+            color: #e0e0e0;
             font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
+            margin: 0;
+            padding: 20px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            box-sizing: border-box;
         }
-        h1 {
-            font-size: 3em;
-            color: #f39c12;
-            text-shadow: 2px 2px #e74c3c;
-        }
-        p {
-            font-size: 1.5em;
-            margin: 20px 0;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-        }
-        .cheer-button {
-            margin-top: 30px;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            color: #ffffff;
-            background-color: #27ae60;
-            border: none;
-            border-radius: 10px;
+
+        .title {
+            font-weight: bold;
+            font-size: 2rem;
+            margin-bottom: 20px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: color 0.3s ease, transform 0.3s ease;
         }
-        .cheer-button:hover {
-            background-color: #2ecc71;
+
+        .title:hover {
+            color: #ffffff;
+            transform: scale(1.1);
+        }
+
+        .clock {
+            font-size: 1.5rem;
+            color: #e0e0e0;
+            margin-bottom: 40px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .video {
+            width: 100%;
+            max-width: 560px;
+            height: auto;
+            margin-top: 80px;
+            display: block;
+        }
+
+        .play-button {
+            display: none;
+            font-size: 1.5rem;
+            color: #e0e0e0;
+            background-color: #333;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+            }
+            .clock {
+                font-size: 1.2rem;
+                right: 10px;
+                top: 10px;
+            }
+            .video {
+                max-width: 100%;
+                margin-top: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 1.2rem;
+                margin-bottom: 10px;
+            }
+            .clock {
+                font-size: 1rem;
+                right: 5px;
+                top: 5px;
+            }
+            .video {
+                display: none;
+            }
+            .play-button {
+                display: block;
+            }
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 10px;
+            text-align: center;
+            color: #666;
         }
     </style>
 </head>
 <body>
-    <h1>Let's Go,hype!</h1>
-    <p>We're unstoppable! Together, we conquer!</p>
-    <!-- <img src="https://example.com/your-clan-image.jpg" alt="Clan Image"> -->
-    <br>
-    <button class="cheer-button" onclick="alert('condo sekxu!')">Cheer Now!</button>
+    <!-- <div class="title">:ove brought out the animal in her</div> -->
+    <div class="clock" id="clock">00:00:00.000 AM</div>
+
+    <!-- <iframe class="video" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+        loading="lazy"></iframe>
+
+    <div class="play-button" onclick="window.location.href='https://www.youtube.com/watch?v=dQw4w9WgXcQ';">
+        ▶ Play Video -->
+    </div>
+
+    <footer>
+        © 2024 Sushil Pathak. All rights reserved.
+    </footer>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const milliseconds = String(now.getMilliseconds()).padStart(3, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            const formattedHours = String(hours).padStart(2, '0');
+            document.getElementById('clock').textContent = `${formattedHours}:${minutes}:${seconds}.${milliseconds} ${ampm}`;
+        }
+
+        setInterval(updateClock, 1); // Update every millisecond
+        updateClock(); // Initial call to display the clock immediately
+    </script>
 </body>
 </html>
