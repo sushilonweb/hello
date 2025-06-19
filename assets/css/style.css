@@ -181,16 +181,20 @@ nav.navbar.bootsnav .navbar-toggle i{color: #d92cf9;}
 /*-------------------------------------
         3.  Welcome-hero
 --------------------------------------*/
-.welcome-hero{
+.welcome-hero {
     display: flex;
     align-items: center;
     justify-content: center;
-    position:relative;
-    background:url(../images/about/5.jpg)no-repeat;
-    background-size:cover;
-    background-position: center;
-    height:890px;
+    position: relative;
+    background: url(../images/about/5.jpg) no-repeat;
+    background-size: cover;
+    background-position: top; /* changed from center to top */
+    height: 890px;
 }
+
+
+
+
 .welcome-hero:before{
     position:absolute;
     content: " ";
